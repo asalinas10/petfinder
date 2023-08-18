@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PetFinder</title>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <style>
+        /* Add your CSS styles here */
+        .filter-bar {
+            display: flex;
+            align-items: center;
+        }
+        
+        .dropdown {
+            margin-right: 10px;
+        }
+        .fact-panel {
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: 40%; /* Adjust the width as needed */
+            float: left;
+            box-sizing: border-box;
+        }
+
+        #results {
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: 60%; /* Adjust the width as needed */
+            float: left;
+            box-sizing: border-box;
+        }
+    </style>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <h1>Pet Finder</h1>
+    <div id="info-bar">
+        <h2>Filter Pets</h2>
+    </div>
+    <div class="filter-bar">
+        <div class="dropdown">
+            <label for="intake-type">Intake Type:</label>
+            <select id="intake-type">
+                <option value="">Select Option</option>
+                <!-- Add intake type options here -->
+            </select>
+        </div>
+        <div class="dropdown">
+            <label for="pet-type">Pet Type:</label>
+            <select id="pet-type">
+                <option value="">Select Option</option>
+                <!-- Add pet type options here -->
+            </select>
+        </div>
+        <div class="dropdown">
+            <label for="size">Size:</label>
+            <select id="size">
+                <option value="">Select Option</option>
+                <!-- Add size options here -->
+            </select>
+        </div>
+        <div class="dropdown">
+            <label for="sex">Sex:</label>
+            <select id="sex">
+                <option value="">Select Option</option>
+                <!-- Add sex options here -->
+            </select>
+        </div>
+        <div class="dropdown">
+            <label for="age">Age:</label>
+            <select id="age">
+                <option value="">Select Option</option>
+                <!-- Add age options here -->
+            </select>
+        </div>
+        <button id="search-button" onclick="searchClicked()">Search</button>
+        <script>
+            function performSearch() {
+                const intakeType = document.getElementById('intake-type').value;
+                const petType = document.getElementById('pet-type').value;
+                const size = document.getElementById('size').value;
+                const sex = document.getElementById('sex').value;
+                const age = document.getElementById('age').value;
+
+                console.log(intakeType, petType, size, sex, age)
+        
+                // Pass the selected choices to the searchClicked function
+                searchClicked(intakeType, petType, size, sex, age);
+            }
+        </script>
+        <script src="https://d3js.org/d3.v7.min.js"></script>
+        <script src="./static/js/script.js"></script>
+    </div>
+    <div class="fact-panel">
+        <h3>Did you know?</h3>
+        <p id="fact-content">Loading facts...</p>
+    </div>
+    <div id="results">
+        <p>Results will display here</p>
+        <!-- Results will be displayed here -->
+    </div>
+</body>
+</html>
