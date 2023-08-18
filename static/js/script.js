@@ -14,7 +14,36 @@ function init() {
     d3.json("/api/pet_age").then( function(data) {
         getAge(data);
     })
+    defaultResults();
 }
+
+function defaultResults() {
+    d3.json("/api/get_data").then( function(data) {
+        let top10 = []
+        for (i=0; i<10 ; i++) {
+            top10.push(data[i])
+        }
+        console.log("Top 10 Results", top10)
+        
+        let resultsList = d3.select("#result-list")
+
+        resultsList
+        .selectAll("div")
+        .data(top10)
+        .enter()
+        .append("div")
+        .attr("class", "result-box") // Apply the CSS class
+        .html(function(d) {
+            return `<p>Animal ID: ${d.animal_id}</p>
+                    <p>Age: ${d.age}</p>
+                    <p>Animal Type: ${d.animal_type}</p>
+                    <p>Intake Type: ${d.intake_type}</p>
+                    <p>In Date: ${d.in_date}</p>`;
+        });    
+    })
+
+}
+
 
 function performSearch() {
     const intakeType = document.getElementById('intake-type').value;
