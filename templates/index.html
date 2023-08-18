@@ -73,23 +73,8 @@
                 <!-- Add age options here -->
             </select>
         </div>
-        <button id="search-button" onclick="searchClicked()">Search</button>
-        <script>
-            function performSearch() {
-                const intakeType = document.getElementById('intake-type').value;
-                const petType = document.getElementById('pet-type').value;
-                const size = document.getElementById('size').value;
-                const sex = document.getElementById('sex').value;
-                const age = document.getElementById('age').value;
-
-                console.log(intakeType, petType, size, sex, age)
+        <button id="search-button" onclick="performSearch()">Search</button>
         
-                // Pass the selected choices to the searchClicked function
-                searchClicked(intakeType, petType, size, sex, age);
-            }
-        </script>
-        <script src="https://d3js.org/d3.v7.min.js"></script>
-        <script src="./static/js/script.js"></script>
     </div>
     <div class="fact-panel">
         <h3>Did you know?</h3>
@@ -99,5 +84,7 @@
         <p>Results will display here</p>
         <!-- Results will be displayed here -->
     </div>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="./static/js/script.js"></script>
 </body>
 </html>

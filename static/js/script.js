@@ -16,11 +16,19 @@ function init() {
     })
 }
 
+function performSearch() {
+    const intakeType = document.getElementById('intake-type').value;
+    const petType = document.getElementById('pet-type').value;
+    const size = document.getElementById('size').value;
+    const sex = document.getElementById('sex').value;
+    const age = document.getElementById('age').value;        
+    // Pass the selected choices to the searchClicked function
+    searchClicked(intakeType, petType, size, sex, age);
+}
+
 function searchClicked(intakeType, petType, size, sex, age) {
     // Handle the logic using the selected choices
-    
-    let intake_type = d3.select("#intake-type");
-    console.log("Intake Type:", intake_type);
+    console.log("Intake Type:", intakeType);
     console.log("Pet Type:", petType);
     console.log("Size:", size);
     console.log("Sex:", sex);
@@ -34,7 +42,7 @@ function getIntakeType(intakeType) {
     let dropdown = d3.select("#intake-type")
     for (i=0; i<intakeType.length; i++) {
         let addChoice = dropdown.append("option");
-        addChoice.text(`${intakeType[i]}`);
+        addChoice.text(`${intakeType[i]}`).attr('value', `${intakeType[i]}`);
     }
 };
 
@@ -42,7 +50,7 @@ function getPetType(petType) {
     let dropdown = d3.select("#pet-type")
     for (i=0; i<petType.length; i++) {
         let addChoice = dropdown.append("option");
-        addChoice.text(`${petType[i]}`);
+        addChoice.text(`${petType[i]}`).attr('value', `${petType[i]}`);
     }
 };
 
@@ -50,7 +58,7 @@ function getSize(petSize) {
     let dropdown = d3.select("#size")
     for (i=0; i<petSize.length; i++) {
         let addChoice = dropdown.append("option");
-        addChoice.text(`${petSize[i]}`)
+        addChoice.text(`${petSize[i]}`).attr('value', `${petSize[i]}`)
     }
 };
 
@@ -79,7 +87,7 @@ function getSex(petSex) {
 
     for (i=0; i<sex.length; i++) {
         let addChoice = dropdown.append("option");
-        addChoice.text(`${sex[i]}`)
+        addChoice.text(`${sex[i]}`).attr('value',`${sex[i]}`)
     }
 };
 
@@ -87,7 +95,7 @@ function getAge(petAge) {
     let dropdown = d3.select("#age")
     for (i=0; i<petAge.length; i++) {
         let addChoice = dropdown.append("option");
-        addChoice.text(`${petAge[i]}`)
+        addChoice.text(`${petAge[i]}`).attr('value', `${petAge[i]}`)
     }
 };
 
