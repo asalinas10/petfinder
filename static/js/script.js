@@ -27,21 +27,38 @@ function defaultResults() {
         
         let resultsList = d3.select("#result-list")
 
-        resultsList
-        .selectAll("div")
-        .data(top10)
-        .enter()
-        .append("div")
-        .attr("class", "result-box") // Apply the CSS class
-        .html(function(d) {
-            return `<p>Animal ID: ${d.animal_id}</p>
-                    <p>Age: ${d.age}</p>
-                    <p>Animal Type: ${d.animal_type}</p>
-                    <p>Intake Type: ${d.intake_type}</p>
-                    <p>In Date: ${d.in_date}</p>`;
-        });    
-    })
 
+        // Loop through the top10 array and add each result to the resultsList
+        top10.forEach(result => {
+            // Create a div for the result and assign the "result-box" class
+            let resultBox = resultsList.append("div")
+                .attr("class", "result-box");
+
+            // Create a div for the image section
+            let imageSection = resultBox.append("div")
+                .attr("class", "image-section");
+
+            // Create an image element within the image section
+            imageSection.append("img")
+                .attr("src", result.link)
+                .attr("alt", "Image");
+
+            // Create a div for the facts section
+            let factsSection = resultBox.append("div")
+                .attr("class", "facts-section");
+
+            // Populate the facts section with data (adjust as needed)
+            factsSection.append("p")
+                .html(
+                    `<p>Animal ID: ${result.animal_id}</p>
+                    <p>Name: ${result.name}</p>
+                    <p>Age: ${result.age}</p>
+                    <p>Animal Type: ${result.animal_type}</p>
+                    <p>Intake Type: ${result.intake_type}</p>
+                    <p>In Date: ${result.in_date}</p>`
+                    );
+        });
+    });
 }
 
 
@@ -116,7 +133,7 @@ function getSex(petSex) {
 
     for (i=0; i<sex.length; i++) {
         let addChoice = dropdown.append("option");
-        addChoice.text(`${sex[i]}`).attr('value',`${sex[i]}`)
+        addChoice.text(`${sex[i]}`).attr('value',`${petSex[i]}`)
     }
 };
 

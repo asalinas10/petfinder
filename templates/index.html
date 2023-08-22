@@ -3,94 +3,91 @@
 <head>
     <title>PetFinder</title>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
-    <style>
-        /* Add your CSS styles here */
-        .filter-bar {
-            display: flex;
-            align-items: center;
-        }
-        
-        .dropdown {
-            margin-right: 10px;
-        }
-        .fact-panel {
-            border: 1px solid #ccc;
-            padding: 10px;
-            width: 20%; /* Adjust the width as needed */
-            float: left;
-            box-sizing: border-box;
-        }
-
-        #results {
-            border: 1px solid #ccc;
-            padding: 10px;
-            width: 80%; /* Adjust the width as needed */
-            float: left;
-            box-sizing: border-box;
-        }
-        .result-box {
-        border: 1px solid #ccc;
-        padding: 10px;
-        margin-bottom: 10px;
-    }
-    </style>
+    <link rel="stylesheet" href="./static/css/style.css">
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
-<body>
-    <h1>Pet Finder</h1>
-    <div id="info-bar">
-        <h2>Filter Pets</h2>
-    </div>
-    <div class="filter-bar">
-        <div class="dropdown">
-            <label for="intake-type">Intake Type:</label>
-            <select id="intake-type">
-                <option value="">Select Option</option>
-                <!-- Add intake type options here -->
-            </select>
+<body style ='background:rgb(101, 173, 163)'>
+    
+    <div class="container">
+        <div class="jumbotron text-center">
+            <h1>Pet Finder</h1>
         </div>
-        <div class="dropdown">
-            <label for="pet-type">Pet Type:</label>
-            <select id="pet-type">
-                <option value="">Select Option</option>
-                <!-- Add pet type options here -->
-            </select>
-        </div>
-        <div class="dropdown">
-            <label for="size">Size:</label>
-            <select id="size">
-                <option value="">Select Option</option>
-                <!-- Add size options here -->
-            </select>
-        </div>
-        <div class="dropdown">
-            <label for="sex">Sex:</label>
-            <select id="sex">
-                <option value="">Select Option</option>
-                <!-- Add sex options here -->
-            </select>
-        </div>
-        <div class="dropdown">
-            <label for="age">Age:</label>
-            <select id="age">
-                <option value="">Select Option</option>
-                <!-- Add age options here -->
-            </select>
-        </div>
-        <button id="search-button" onclick="performSearch()">Search</button>
-        
-    </div>
-    <div class="fact-panel">
-        <h3>Did you know?</h3>
-        <p id="fact-content">Loading facts...</p>
+    
 
+    
+        <div id="info-bar">
+            <h2>What are you looking for in a pet?</h2>
+            <div class = "social-media">
+                <span style="color:#336699;"> 
+                <span style="font-size:22px;"> 
+                    <strong>Follow us!&nbsp;</strong> 
+                    </span> </span> 
+                <a href="http://facebook.com/mcasac"> 
+                    <img alt="Facebook" src="https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Facebook_colored_svg_copy-512.png" style="width: 50px; height: 50px;"> </a> 
+                <a href="http://instagram.com/mcasac"> 
+                    <img alt="Instagram" src="https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Instagram_colored_svg_1-512.png" style="width: 50px; height: 50px;"> </a> 
+                <a href="https://twitter.com/mcasac"> 
+                    <img alt="Twitter" src="https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Twitter_colored_svg-512.png" style="width: 50px; height: 50px;"> </a> 
+                <a href="https://www.youtube.com/@MoCoAnimalServices" target="_blank"> 
+                    <img alt="" src="https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Youtube_colored_svg-512.png" style="width: 50px; height: 50px;"> </a> 
+                <a href="https://www.tiktok.com/@mocoanimalservices?"> 
+                    <img alt="" src="https://cdn4.iconfinder.com/data/icons/social-media-flat-7/64/Social-media_Tiktok-256.png" style="width: 50px; height: 50px;"> </a>
+                </div>
+        </div>
+    
+        <div class="filter-bar">
+            <div class="dropdown">
+                <label for="intake-type">Intake Type:</label>
+                <select id="intake-type">
+                    <option value="">Select Option</option>
+                    <!-- Add intake type options here -->
+                </select>
+            </div>
+            <div class="dropdown">
+                <label for="pet-type">Pet Type:</label>
+                <select id="pet-type">
+                    <option value="">Select Option</option>
+                    <!-- Add pet type options here -->
+                </select>
+            </div>
+            <div class="dropdown">
+                <label for="size">Size:</label>
+                <select id="size">
+                    <option value="">Select Option</option>
+                    <!-- Add size options here -->
+                </select>
+            </div>
+            <div class="dropdown">
+                <label for="sex">Sex:</label>
+                <select id="sex">
+                    <option value="">Select Option</option>
+                    <!-- Add sex options here -->
+                </select>
+            </div>
+            <div class="dropdown">
+                <label for="age">Age:</label>
+                <select id="age">
+                    <option value="">Select Option</option>
+                    <!-- Add age options here -->
+                </select>
+            </div>
+            <button id="search-button" onclick="performSearch()">Search</button>
+            
+        </div>
+        <div class="fact-panel">
+            <h3>Did you know?</h3>
+            <p id="fact-content">Loading facts...</p>
+
+        </div>
+        <div id="results">
+            <p>Results:</p>
+            <div id = "result-list"> </div>
+        </div>
+        <script src="https://d3js.org/d3.v7.min.js"></script>
+        <script src="./static/js/script.js"></script>
     </div>
-    <div id="results">
-        <p>Results:</p>
-        <div id = "result-list"> </div>
-    </div>
-    <script src="https://d3js.org/d3.v7.min.js"></script>
-    <script src="./static/js/script.js"></script>
+
 </body>
 </html>
