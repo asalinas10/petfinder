@@ -13,7 +13,7 @@ h2{
 .filter-bar {
     color: #0b5c52;
     display: flex;
-    align-items: center;
+    align-content: center;
     margin: 10 px;
     box-sizing: border-box;
     font-family: "Comfortaa", cursive;
@@ -23,6 +23,7 @@ h2{
 .dropdown {
     color: #0b5c52;
     margin-right: 8px;
+    align-items: center;
     font-family: "Comfortaa", cursive;
 }
 
@@ -76,8 +77,6 @@ h2{
     flex: 1;
     padding: 10px;
 }
-/* ------------------------------*/
-/* this is all new to the CSS file */
 
 .jumbotron {
     background-color: #65ADA3 !important;
@@ -93,6 +92,8 @@ h3 {
 }
 
 .social-media {
+    color:#336699;
+    font-size:22px;
     text-align: center;
     position: absolute;
     top: 2;
@@ -103,11 +104,9 @@ h3 {
 
 .container {
     max-width: 1280px;
+    align-items: center;
   }
 
-/*these changes have to be made in the html file:
-- social media section, change 'Follow Us' to 'Want more details?' add a line break after Want More Details?, Instagram and YouTube 
-- change the name and add these headers in the jumbotron section
-    <h1>PetPal Match: Connecting Hearts and Paws</h1>
-    <h2>Animal Services & Adoption Center</h2><br>
-    <h3>Montgomery County, Maryland</h3>
+#info-bar {
+    align-content: center;
+}
