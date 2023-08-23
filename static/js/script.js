@@ -114,73 +114,73 @@ function searchClicked(intakeType, petType, size, sex) {
     
     
     function filterPet(pet) {
-    let isMatch = true;  // Start with true and narrow down using conditions
-    if (intakeType !== "") {
-        isMatch = isMatch && pet["intake_type"] === intakeType;
+        let isMatch = true;  // Start with true and narrow down using conditions
+        if (intakeType !== "") {
+            isMatch = isMatch && pet["intake_type"] === intakeType;
+        }
+        if (petType !== "") {
+            isMatch = isMatch && pet["animal_type"] === petType;
+        }
+        if (size !== "") {
+            isMatch = isMatch && pet["size"] === size;
+        }
+        if (sex !== "") {
+            isMatch = isMatch && pet["sex"] === sex;
+        }
+        return isMatch;
     }
-    if (petType !== "") {
-        isMatch = isMatch && pet["animal_type"] === petType;
-    }
-    if (size !== "") {
-        isMatch = isMatch && pet["size"] === size;
-    }
-    if (sex !== "") {
-        isMatch = isMatch && pet["sex"] === sex;
-    }
-    return isMatch;
-}
     
     
         d3.json("/api/get_data").then( function(data) {
+
+        let searchedResults = data.filter(filterPet);
+        let resultsList = d3.select("#result-list");
+        resultsList.selectAll("*").remove();
+
+        if (searchedResults.length == 0) {
+            let resultBox = resultsList.append("div")
+                .attr("class", "result-box")
+                .text("No results found");
+            let paginationContainer = d3.select("#pagination");
+            paginationContainer.selectAll("*").remove();
+        }
+        else {
+        searchedResults.forEach(result => {
+            let resultBox = resultsList.append("div")
+            .attr("class", "result-box");
+
+            // Create a div for the image section
+            let imageSection = resultBox.append("div")
+                .attr("class", "image-section");
+
+            // Create an image element within the image section
+            imageSection.append("img")
+                .attr("src", result.link)
+                .attr("alt", "Image");
+
+            // Create a div for the facts section
+            let factsSection = resultBox.append("div")
+                .attr("class", "facts-section");
+
+            
+            // Populate the facts section with data
+            factsSection.append("p")
+                .html(
+                    `<p>Animal ID: ${result.animal_id}</p>
+                    <p>Name: ${result.name}</p>
+                    <p>Age: ${result.age}</p>
+                    <p>Animal Type: ${result.animal_type}</p>
+                    <p>Sex: ${sexChange(result.sex)}</p>
+                    <p>Size: ${result.size}</p>
+                    <p>Intake Type: ${result.intake_type}</p>
+                    <p>In Date: ${result.in_date}</p>`
+                    );
+            });
+
+        displayResults(searchedResults, 1)
+        };
     
-            let searchedResults = data.filter(filterPet);
-            let resultsList = d3.select("#result-list");
-            resultsList.selectAll("*").remove();
-
-            if (searchedResults.length == 0) {
-                let resultBox = resultsList.append("div")
-                    .attr("class", "result-box")
-                    .text("No results found");
-                let paginationContainer = d3.select("#pagination");
-                paginationContainer.selectAll("*").remove();
-            }
-            else {
-            searchedResults.forEach(result => {
-                let resultBox = resultsList.append("div")
-                .attr("class", "result-box");
-
-                // Create a div for the image section
-                let imageSection = resultBox.append("div")
-                    .attr("class", "image-section");
-
-                // Create an image element within the image section
-                imageSection.append("img")
-                    .attr("src", result.link)
-                    .attr("alt", "Image");
-
-                // Create a div for the facts section
-                let factsSection = resultBox.append("div")
-                    .attr("class", "facts-section");
-
-                
-                // Populate the facts section with data
-                factsSection.append("p")
-                    .html(
-                        `<p>Animal ID: ${result.animal_id}</p>
-                        <p>Name: ${result.name}</p>
-                        <p>Age: ${result.age}</p>
-                        <p>Animal Type: ${result.animal_type}</p>
-                        <p>Sex: ${sexChange(result.sex)}</p>
-                        <p>Size: ${result.size}</p>
-                        <p>Intake Type: ${result.intake_type}</p>
-                        <p>In Date: ${result.in_date}</p>`
-                        );
-                });
-
-            displayResults(searchedResults, 1)
-            };
-        
-        }); 
+    }); 
 };
 
 function sexChange(sex) {  
