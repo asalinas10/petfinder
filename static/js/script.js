@@ -114,14 +114,21 @@ function searchClicked(intakeType, petType, size, sex) {
     
     
     function filterPet(pet) {
-        let isMatch = (pet["intake_type"] == intakeType
-            && pet["animal_type"] == petType
-            && pet["size"] == size
-            && pet ["sex"] == sex
-        )
-        // console.log(`${pet["name"]}: ${isMatch}`)
-        return isMatch;
-        } 
+    let isMatch = true;  // Start with true and narrow down using conditions
+    if (intakeType !== "") {
+        isMatch = isMatch && pet["intake_type"] === intakeType;
+    }
+    if (petType !== "") {
+        isMatch = isMatch && pet["animal_type"] === petType;
+    }
+    if (size !== "") {
+        isMatch = isMatch && pet["size"] === size;
+    }
+    if (sex !== "") {
+        isMatch = isMatch && pet["sex"] === sex;
+    }
+    return isMatch;
+}
     
     
         d3.json("/api/get_data").then( function(data) {
