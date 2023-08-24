@@ -53,6 +53,8 @@ function displayResults(results, page) {
                 <p>Name: ${result.name}</p>
                 <p>Age: ${result.age}</p>
                 <p>Animal Type: ${result.animal_type}</p>
+                <p>Breed: ${result.breed}</p>
+                <p>Color: ${result.color}</p>
                 <p>Sex: ${sexChange(result.sex)}</p>
                 <p>Size: ${result.size}</p>
                 <p>Intake Type: ${result.intake_type}</p>
@@ -170,6 +172,8 @@ function searchClicked(intakeType, petType, size, sex) {
                     <p>Name: ${result.name}</p>
                     <p>Age: ${result.age}</p>
                     <p>Animal Type: ${result.animal_type}</p>
+                    <p>Breed: ${result.breed}</p>
+                    <p>Color: ${result.color}</p>
                     <p>Sex: ${sexChange(result.sex)}</p>
                     <p>Size: ${result.size}</p>
                     <p>Intake Type: ${result.intake_type}</p>

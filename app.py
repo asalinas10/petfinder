@@ -26,6 +26,8 @@ class RowData(Base):
     size = Column(String)
     sex = Column(String)
     link = Column(String)
+    color = Column(String)
+    breed = Column(String)
 
 Base.metadata.drop_all(engine)
 Base.metadata.create_all(engine)
@@ -52,12 +54,14 @@ for item in data['data']:
     size = item[columns.index("Pet Size")]
     sex = item[columns.index("Sex")]
     link_list = item[columns.index("URL Link ")]
-    if link_list:
+    color = item[columns.index("Color")]
+    breed =  item[columns.index("Breed")]
+    if link_list :
         link = str(link_list[0])  # Take the first URL if available
     else:
         link = None  # Set to None if the list is empty
 
-    row = RowData(animal_id=animal_id, name=name, in_date=in_date, age=age, animal_type=animal_type, intake_type=intake_type,  size=size, sex=sex , link=link)
+    row = RowData(animal_id=animal_id, name=name, in_date=in_date, age=age, animal_type=animal_type, intake_type=intake_type,  size=size, sex=sex , link=link, color=color, breed=breed)
     session.add(row)
     session.commit()
 session.close()
@@ -82,7 +86,10 @@ def get_data():
             "in_date": row.in_date,
             "size": row.size,
             "sex": row.sex,
+            "color": row.color,
+            "breed": row.breed,
             "link": row.link
+            
         }
         results_list.append(row_dict)
 
