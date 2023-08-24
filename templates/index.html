@@ -1,12 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PetFinder</title>
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
     <link rel="stylesheet" href="./static/css/style.css">
+    <link rel="stylesheet" href="./static/css/glide.core.min.css">
+    <link rel="stylesheet" href="./static/css/glide.theme.min.css">
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+
 </head>
 <body style ='background:rgb(43, 107, 98)'>
     
@@ -19,20 +24,6 @@
     
         <div id="info-bar">
             <h2>What are you looking for in a pet?</h2>
-            <div class = "social-media">
-                    <strong>Ready to Adopt?&nbsp;</strong><br>
-                    </span> </span> 
-                <a href="http://facebook.com/mcasac"> 
-                    <img alt="Facebook" src="https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Facebook_colored_svg_copy-512.png" style="width: 50px; height: 50px;"> </a> 
-                <a href="http://instagram.com/mcasac"> 
-                    <img alt="Instagram" src="https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Instagram_colored_svg_1-512.png" style="width: 50px; height: 50px;"> </a><br>
-                <a href="https://twitter.com/mcasac"> 
-                    <img alt="Twitter" src="https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Twitter_colored_svg-512.png" style="width: 50px; height: 50px;"> </a> 
-                <a href="https://www.youtube.com/@MoCoAnimalServices" target="_blank"> 
-                    <img alt="" src="https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Youtube_colored_svg-512.png" style="width: 50px; height: 50px;"> </a><br>
-                <a href="https://www.tiktok.com/@mocoanimalservices?"> 
-                    <img alt="" src="https://cdn4.iconfinder.com/data/icons/social-media-flat-7/64/Social-media_Tiktok-256.png" style="width: 50px; height: 50px;"> </a>
-                </div>
         </div>
         
         <div class="filter-bar">
@@ -67,25 +58,88 @@
             <button id="search-button" onclick="performSearch()">Search</button>
             
         </div>
-
-        <div class="fact-panel">
-            <h3>Did you know?</h3>
-            <p id="fact-content">Loading facts...</p>
-
+        <div class="left-column">
+            <div class="fact-panel">
+                <h3>Did you know?</h3>
+                <div id="fact-content">
+                    <li>Approximately 6.3 million companion animals enter U.S. animal shelters nationwide every year. Of those, approximately 3.1 million are dogs and 3.2 million are cats. We estimate that the number of dogs and cats entering U.S. shelters annually has declined from approximately 7.2 million in 2011. The biggest decline was in dogs (from 3.9 million to 3.1 million).</li>
+                    <li>Each year, approximately 920,000 shelter animals are euthanized (390,000 dogs and 530,000 cats). The number of dogs and cats euthanized in U.S. shelters annually has declined from approximately 2.6 million in 2011.  This decline can be partially explained by an increase in the percentage of animals adopted and an increase in the number of stray animals successfully returned to their owners.</li>
+                    <li>Approximately 4.1 million shelter animals are adopted each year (2 million dogs and 2.1 million cats).</li>
+                    <li>About 810,000 animals who enter shelters as strays are returned to their owners. Of those, 710,000 are dogs and 100,000 are cats.</li>
+                    <ul></ul>
+                    <ul>
+                        <p class="reference">Source: <a href="https://www.aspca.org/helping-people-pets/shelter-intake-and-surrender/pet-statistics" target="_blank">aspca</a></p>
+                    </ul>   
+                </div>
+                <div class="glide">
+                    <div class="glide__track" data-glide-el="track">
+                    <ul class="glide__slides">
+                        <div class="glide__slide" id="piechart">
+                            <h3>Pie Chart</h3>
+                        </div>
+                        <div class="glide__slide" id="barchart">
+                            <h3>Bar Chart</h3>
+                        </div>
+                        <div class="glide__slide" id="linechart">
+                            <h3>Line Chart</h3>      
+                        </div>
+                    </ul>
+                    </div>
+                    <div class="glide__arrows" data-glide-el="controls">
+                        <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
+                        <button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button>
+                    </div>
+                </div> 
+            </div>
+            <div class = "social-media">
+                <strong>Follow Us!&nbsp;</strong><br>
+                </span> </span> 
+                <a href="http://facebook.com/mcasac"> 
+                    <img alt="Facebook" src="https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Facebook_colored_svg_copy-512.png" style="width: 50px; height: 50px;"> </a> 
+                <a href="http://instagram.com/mcasac"> 
+                    <img alt="Instagram" src="https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Instagram_colored_svg_1-512.png" style="width: 50px; height: 50px;"> </a>
+                <a href="https://twitter.com/mcasac"> 
+                    <img alt="Twitter" src="https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Twitter_colored_svg-512.png" style="width: 50px; height: 50px;"> </a> 
+                <a href="https://www.youtube.com/@MoCoAnimalServices" target="_blank"> 
+                    <img alt="" src="https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Youtube_colored_svg-512.png" style="width: 50px; height: 50px;"> </a>
+                <a href="https://www.tiktok.com/@mocoanimalservices?"> 
+                    <img alt="" src="https://cdn4.iconfinder.com/data/icons/social-media-flat-7/64/Social-media_Tiktok-256.png" style="width: 50px; height: 50px;"> </a>
+            </div>
+            <div id = "adopt-here" class="sticky">
+                <h2>Ready to adopt?</h2>
+                <a href="https://www.montgomerycountymd.gov/animalservices/adoption/howtoadopt.html"> 
+                    <img alt="adopt" src="https://cdn3.iconfinder.com/data/icons/selection-and-cursors-23/48/click_pointer_click_here_mouse_clicker-512.png" style="width: 100px; height: 100px;"> </a> 
+            </div>
+                        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.sticky/1.0.4/jquery.sticky.min.js"></script>
+            <script>
+                $(document).ready(function() {
+                    $("#adopt-here").sticky({ topSpacing: 200 });
+            });
+        </script>
         </div>
         <div id="results">
             <p>Results:</p>
             <div id = "result-list"> </div>
             <div id="pagination"></div>
         </div>
-        <div id="piechart">
-            <h3>Intake Type</h3>
-        </div>
+    </div>   
 
         <script src="https://d3js.org/d3.v7.min.js"></script>
         <script src="./static/js/script.js"></script>
         <script src="./static/js/graphs.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
+        <script>
+            const config = {
+                type: 'carousel'
+            }
+            new Glide('.glide', config).mount()
+        </script>
+
     </div>
+    
+
+
 
 </body>
 </html>
