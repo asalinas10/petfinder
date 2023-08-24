@@ -24,6 +24,13 @@ h2 {
     margin-bottom: 20px;
 }
 
+#pagination button{
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background:rgb(43, 107, 98);
+    color: #eba374;
+}
+
 .dropdown {
     color: #78c5bc;
     margin-right: 8px;
@@ -45,6 +52,16 @@ h2 {
 
 #fact-content {
     padding: 10px;
+    color: #eba374;
+}
+#fact-content li {
+    margin-bottom: 10px; /* Add space between each bullet point */
+}
+#fact-content u {
+    color: #c9899d;; /* Change the color of underlined text */
+}
+#fact-content b {
+    color: #c9899d;; /* Change the color of bold text */
 }
 
 .social-media {
@@ -55,7 +72,7 @@ h2 {
     font-size:22px;
     text-align: center;
     width: 400px;
-    height: 200px;
+    height: 150px;
     float: left;
 }
 
@@ -194,3 +211,4 @@ h3 {
     background:#cccccc;
     border:1px solid #cccccc;
   }
+

@@ -60,16 +60,7 @@
         <div class="left-column">
             <div class="fact-panel">
                 <h3>Did you know?</h3>
-                <div id="fact-content">
-                    <li>Approximately 6.3 million companion animals enter U.S. animal shelters nationwide every year. Of those, approximately 3.1 million are dogs and 3.2 million are cats. We estimate that the number of dogs and cats entering U.S. shelters annually has declined from approximately 7.2 million in 2011. The biggest decline was in dogs (from 3.9 million to 3.1 million).</li>
-                    <li>Each year, approximately 920,000 shelter animals are euthanized (390,000 dogs and 530,000 cats). The number of dogs and cats euthanized in U.S. shelters annually has declined from approximately 2.6 million in 2011.  This decline can be partially explained by an increase in the percentage of animals adopted and an increase in the number of stray animals successfully returned to their owners.</li>
-                    <li>Approximately 4.1 million shelter animals are adopted each year (2 million dogs and 2.1 million cats).</li>
-                    <li>About 810,000 animals who enter shelters as strays are returned to their owners. Of those, 710,000 are dogs and 100,000 are cats.</li>
-                    <ul></ul>
-                    <ul>
-                        <p class="reference">Source: <a href="https://www.aspca.org/helping-people-pets/shelter-intake-and-surrender/pet-statistics" target="_blank">aspca</a></p>
-                    </ul>   
-                </div>
+                <div id="fact-content"></div>
                 <div class="glide">
                     <div class="glide__track" data-glide-el="track">
                     <ul class="glide__slides">
@@ -85,8 +76,8 @@
                     </ul>
                     </div>
                     <div class="glide__arrows" data-glide-el="controls">
-                        <button class="glide__arrow glide__arrow--left" data-glide-dir="<">prev</button>
-                        <button class="glide__arrow glide__arrow--right" data-glide-dir=">">next</button>
+                        <button class="glide__arrow glide__arrow--left" data-glide-dir="<"><</button>
+                        <button class="glide__arrow glide__arrow--right" data-glide-dir=">">></button>
                     </div>
                 </div> 
             </div>
@@ -113,12 +104,12 @@
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.sticky/1.0.4/jquery.sticky.min.js"></script>
             <script>
                 $(document).ready(function() {
-                    $("#adopt-here").sticky({ topSpacing: 200 });
+                    $("#adopt-here").sticky({ topSpacing: 700 });
             });
         </script>
         </div>
         <div id="results">
-            <p>Results:</p>
+            <p id="results-count"></p>
             <div id = "result-list"> </div>
             <div id="pagination"></div>
         </div>
