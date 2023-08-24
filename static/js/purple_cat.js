@@ -178,4 +178,4 @@ let illo = new Zdog.Illustration({
   }
   
   animate();
-};
+}
