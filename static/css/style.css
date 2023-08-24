@@ -163,34 +163,45 @@ h3 {
     border:1px solid #cccccc;
   }
 
-  #pet-type {
+#pet-type {
     border-radius:36px;
     display:inline-block;
     overflow:hidden;
     background:#cccccc;
     border:1px solid #cccccc;
-  }
+}
 
-  #size {
+#size {
     border-radius:36px;
     display:inline-block;
     overflow:hidden;
     background:#cccccc;
     border:1px solid #cccccc;
-  }
+}
 
-  #sex {
+#sex {
     border-radius:36px;
     display:inline-block;
     overflow:hidden;
     background:#cccccc;
     border:1px solid #cccccc;
-  }
+}
 
-  #search-button {
+#search-button {
     border-radius:36px;
     display:inline-block;
     overflow:hidden;
     background:#cccccc;
     border:1px solid #cccccc;
-  }
+}
+
+/* body {
+	background-color: #111;
+} */
+
+#canvas {
+	position: absolute;
+	transform: translateX(-50%) translateY(-50%);
+	left: 50%;
+	top: 50%;
+} 
