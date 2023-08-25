@@ -197,7 +197,101 @@ h3 {
     margin: 0.2em 0; 
 }
 
+@media (max-width: 768px) {
+    /* Reset container's max-width for full-width layout */
+    .container {
+        display: block;
+    }
 
+    /* Center-align jumbo r tron text */
+    .jumbotron {
+        text-align: center;
+       order: 1;
+    }
+
+    /* Stack elements vertically in filter-bar */
+    .filter-bar {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Modify search-button styles for better display */
+    #search-button {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    /* Adjust spacing for adopt-here section */
+    #adopt-here {
+        margin-top: 20px;
+    }
+
+    /* Full width for left-column and results sections */
+    .left-column,
+    #results {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    /* Stack image-section above facts-section within result-box */
+    .result-box {
+        flex-direction: column;
+    }
+    
+    .image-section,
+    .facts-section {
+        width: 100%;
+        padding: 10px;
+        order: 2; /* Change order to stack image-section above facts-section */
+    }
+
+    /* Stack sections according to the specified order */
+    .social-media {
+        order: 2; /* Move social media after Jumbotron */
+    }
+
+    .info-bar {
+        order: 3; /* Move Info bar after social media */
+    }
+
+    .filter-bar {
+        order: 4; /* Keep Filter bar as it is */
+    }
+
+    .left-column {
+        order: 5; /* Keep Left column as it is */
+    }
+
+    #results {
+        order: 6; /* Keep Results as it is */
+    }
+
+    .sticky {
+        order: 7; /* Keep Ready to adopt as it is */
+    }
+
+    /* Center-align adopt-here section */
+    #adopt-here {
+        text-align: center;
+    }
+
+    /* Adjust sticky positioning for adopt-here */
+    .sticky {
+        position: static;
+    }
+
+    /* Modify pagination button styles for better display */
+    #pagination button {
+        width: auto;
+        margin: 5px;
+    }
+
+    /* Adjust spacing for fact-content elements */
+    #fact-content li,
+    #fact-content p {
+        margin-bottom: 5px;
+    }
+}
 
 
 
