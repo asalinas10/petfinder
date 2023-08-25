@@ -21,6 +21,7 @@
             <h2>Animal Services & Adoption Center</h2><br>
             <h3>Montgomery County, Maryland</h3>
         </div>
+    
         <div id="info-bar">
             <h2>What are you looking for in a pet?</h2>
         </div>
@@ -61,17 +62,20 @@
             <div class="fact-panel">
                 <h3>Did you know?</h3>
                 <div id="fact-content"></div>
-                <div class="glide">
+                <div id="piechart"></div>
+                <div id="barchart-container"></div>
+                <div id="donutchart-container"></div>
+                <!-- <div class="glide">
                     <div class="glide__track" data-glide-el="track">
                     <ul class="glide__slides">
-                        <div class="glide__slide" id="piechart">
-                            <h3>Pie Chart</h3>
+                        <div class="glide__slide">
+                            <div id="piechart"></div>
                         </div>
-                        <div class="glide__slide" id="barchart">
-                            <h3>Bar Chart</h3>
+                        <div class="glide__slide">
+                            <div id="barchart-container"></div>
                         </div>
-                        <div class="glide__slide" id="linechart">
-                            <h3>Line Chart</h3>      
+                        <div class="glide__slide">
+                            <div id="donutchart-container"></div>
                         </div>
                     </ul>
                     </div>
@@ -79,7 +83,15 @@
                         <button class="glide__arrow glide__arrow--left" data-glide-dir="<"><</button>
                         <button class="glide__arrow glide__arrow--right" data-glide-dir=">">></button>
                     </div>
-                </div> 
+                </div>
+                <script>
+                    const config = {
+                        type: 'carousel',
+                        // autoplay: 5000,
+                        hoverpause: true
+                    }
+                    new Glide('.glide', config).mount()
+                </script> -->
             </div>
             <div class = "social-media">
                 <strong>Follow Us!&nbsp;</strong><br>
@@ -105,30 +117,24 @@
             <script>
                 $(document).ready(function() {
                     $("#adopt-here").sticky({ topSpacing: 500 });
-            });
-        </script>
+                });
+            </script>
         </div>
         <div id="results">
             <p id="results-count"></p>
             <div id = "result-list"> </div>
             <div id="pagination"></div>
         </div>
-    </div>   
-
         <script src="https://d3js.org/d3.v7.min.js"></script>
         <script src="./static/js/script.js"></script>
         <script src="./static/js/graphs.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
-        <script>
-            const config = {
-                type: 'carousel',
-                autoplay: 5000,
-                hoverpause: true
-            }
-            new Glide('.glide', config).mount()
-        </script>
 
-    </div>
+    </div>   
+
+
+
+
     
 
 

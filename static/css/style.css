@@ -15,14 +15,28 @@ h2 {
     display: flex;
     border: 1px solid #ccc;
     border-radius: 30px;
-    padding: 10px;
+    padding: 15px;
     align-content: center;
+    align-items: center;
     justify-content: center;
     box-sizing: border-box;
     font-family: "Comfortaa", cursive;
     font-size: 18px;
     margin-bottom: 20px;
 }
+
+#search-button {
+    border-radius:36px;
+    height: 25px;
+    width: 100px;
+    display:inline-block;
+    overflow:hidden;
+    background:#cccccc;
+    border:1px solid #cccccc;
+    vertical-align: top;
+    padding: 0;
+    font-size: 16px;
+  }
 
 #pagination button{
     border-radius: 5px;
@@ -34,8 +48,18 @@ h2 {
 .dropdown {
     color: #78c5bc;
     margin-right: 8px;
-    align-items: center;
+    align-items: bottom;
     font-family: "Comfortaa", cursive;
+}
+
+.dropdown select{
+    border-radius:30px;
+    /* display:inline-block; */
+    margin-top: 12px;
+    background:#cccccc;
+    border:1px solid #cccccc;
+    align-items: center;
+    font-size: 16px;
 }
 
 .fact-panel {
@@ -73,7 +97,7 @@ h2 {
     text-align: center;
     width: 400px;
     height: 150px;
-    float: left;
+    float: center;
 }
 
 #adopt-here {
@@ -96,7 +120,7 @@ h2 {
     float: left;
     box-sizing: border-box;
     border-radius: 38px;
-    width: 40%;
+    width: 44%;
 }
 
 
@@ -109,7 +133,7 @@ h2 {
     border: 1px solid #ccc;
     border-radius: 30px;
     padding: 10px;
-    width: 60%; /* Adjust the width as needed */
+    width: 56%; /* Adjust the width as needed */
     float: right;
     box-sizing: border-box;
     font-family: "Comfortaa", cursive;
@@ -172,43 +196,7 @@ h3 {
     align-content: center;
 }
 
-#intake-type {
-    border-radius:36px;
-    display:inline-block;
-    overflow:hidden;
-    background:#cccccc;
-    border:1px solid #cccccc;
-  }
 
-  #pet-type {
-    border-radius:36px;
-    display:inline-block;
-    overflow:hidden;
-    background:#cccccc;
-    border:1px solid #cccccc;
-  }
 
-  #size {
-    border-radius:36px;
-    display:inline-block;
-    overflow:hidden;
-    background:#cccccc;
-    border:1px solid #cccccc;
-  }
-
-  #sex {
-    border-radius:36px;
-    display:inline-block;
-    overflow:hidden;
-    background:#cccccc;
-    border:1px solid #cccccc;
-  }
-
-  #search-button {
-    border-radius:36px;
-    display:inline-block;
-    overflow:hidden;
-    background:#cccccc;
-    border:1px solid #cccccc;
-  }
+  
 

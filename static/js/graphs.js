@@ -1,107 +1,155 @@
 
 
 
-function intakePieGraph(intakeType) {
+function intakePieGraph(data) {
+
+    let intakeTypes = {};
+
+    for (let i = 0; i < data.length; i++) {
+        let intakeType = data[i].intake_type;
+        if (intakeType) {
+            if (intakeTypes[intakeType]) {
+                intakeTypes[intakeType]++;
+            } else {
+                intakeTypes[intakeType] = 1;
+            }
+        }
+    }
+
+    console.log("intakeTypes",intakeTypes)
+
+    let pieChartData = {
+        labels: Object.keys(intakeTypes),
+        values: Object.values(intakeTypes),
+        type: 'pie'
+      };
     
-    d3.json("/api/get_data").then( function(data) {
-
+      let layout = {
+        title: {
+          text: 'Intake Type Percentages',
+          font: {
+            color: 'white' // Set title font color to white
+          }
+        },
+        paper_bgcolor: 'rgba(0, 0, 0, 0)', // Set background to transparent
+        plot_bgcolor: 'rgba(0, 0, 0, 0)', // Set plot area background to transparent
+        font: {
+          color: 'white' // Set font color for labels and annotations to white
+        }
+      };
+      // Create the Pie Chart
+    Plotly.newPlot('piechart', [pieChartData], layout);
     
-    
-        for (let i = 0; i<intakeType.length; i++){
-
-            let conCount = 0
-            let retCount = 0
-            let surCount = 0
-            let fosCount = 0
-            let strayCount = 0
-
-            if (intakeType === "Confiscate") {
-                conCount += 1
-            }
-            if (intakeType === "Return") {
-                retCount += 1
-            }
-            if (intakeType === "Owner Sur") {
-                surCount += 1
-            }
-            if (intakeType === "Foster") {
-                fosCount += 1
-            }
-            if (intakeType === "Stray") {
-                strayCount += 1
-            }
-
-            console.log(conCount);
-
-        };
-
-
-        let trace = {
-            x: conCount,
-            x: retCount,
-            x: surCount,
-            x: fosCount,
-            x: strayCount,
-            type: "pie"
-        };
-
-        let newData = [trace];
-
-        let layout = {
-        title: "Intake Percentages"
-        };
-
-        Plotly.newPlot("pie", newData, layout);
-
-    });
 
 };
 
-intakePieGraph();
-
-
-function petPopularityChart(petType) {
+function petPopularityChart(data) {
     
-    d3.json("/api/get_data").then( function(data) {
+    let animalTypes = {};
 
-        let dogCount = 0;
-        let catCount = 0;
-        let otherCount = 0;
-
-        for (let i = 0; i<petType.length; i++){
-
-            if (petType === "Dog") {
-                dogCount += 1
+    for (let i = 0; i < data.length; i++) {
+        let animalType = data[i].animal_type;
+        if (animalType) {
+            if (animalTypes[animalType]) {
+                animalTypes[animalType]++;
+            } else {
+                animalTypes[animalType] = 1;
             }
-            if (petType === "Cat") {
-                catCount += 1
+        }
+    }
+
+    console.log("animalTypes",animalTypes)
+
+    let barChartData = [{
+        x: Object.values(animalTypes),
+        y: Object.keys(animalTypes),
+        type: 'bar',
+        orientation: 'h'
+        // x: Object.keys(animalTypes),
+        // y: Object.values(animalTypes),
+        // type: 'line'
+        }];
+
+
+    let layout = {
+            title: {
+              text: 'Animal Type Counts',
+              font: {
+                color: 'white'
+              }
+            },
+            paper_bgcolor: 'rgba(0, 0, 0, 0)',
+            plot_bgcolor: 'rgba(0, 0, 0, 0)',
+            font: {
+              color: 'white'
+            },
+            xaxis: {
+              titlefont: {
+                color: 'white'
+              },
+              tickfont: {
+                color: 'white'
+              }
+            },
+            yaxis: {
+              title: 'Animal Types',
+              titlefont: {
+                color: 'white'
+              },
+              tickfont: {
+                color: 'white'
+              }
             }
-            if (petType === "Other") {
-                otherCount += 1
+          };
 
-            }
-        };
-
-        let petArray = [dogCount, catCount, otherCount];
-
-        let animalArray = ["Dog", "Cat", "Other"]
-
-        trace = {
-            x: petArray,
-            y: animalArray,
-            type: "bar"
-        };
-
-        let newData = [trace];
-
-        let layout = {
-            title: "Intake Percentages"
-        };
-    
-        Plotly.newPlot("bar", newData, layout);
-
-    });
+    Plotly.newPlot('barchart-container', barChartData, layout);
 };
+
+function makeDonut(data) {
+    let breedData = {};
+
+    for (let i = 0; i < data.length; i++) {
+        let breeds = data[i].breed;
+        if (breeds) {
+            if (breedData[breeds]) {
+                breedData[breeds]++;
+            } else {
+                breedData[breeds] = 1;
+            }
+        }
+    }
+
+    let sortedBreedData = Object.keys(breedData).sort((a, b) => breedData[b] - breedData[a]);
+    let top5Breeds = sortedBreedData.slice(0, 5);
+
+    console.log("breedData",top5Breeds)
+
+    let donutChartData = [{
+        labels: top5Breeds,
+        values: top5Breeds.map(breed => breedData[breed]),
+        type: 'pie',
+        hole: 0.4, // Set the hole size for the donut chart
+    }];
+
+    let layout = {
+        title: {
+            text: 'Top 5 Breed Counts',
+            font: {
+                color: 'white'
+            }
+        },
+        paper_bgcolor: 'rgba(0, 0, 0, 0)',
+        plot_bgcolor: 'rgba(0, 0, 0, 0)',
+        font: {
+            color: 'white'
+        }
+    };
+
+    // Create the Donut Chart
+    Plotly.newPlot('donutchart-container', donutChartData, layout);
+    
+
+}
 
 function petSize(petType, size) {
 

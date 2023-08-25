@@ -17,6 +17,9 @@ function init() {
     d3.json("/api/get_data").then( function(data) {
         displayResults(data, 1);
         didYouKnow(data);
+        intakePieGraph(data);
+        petPopularityChart(data);
+        makeDonut(data);
     });
 }
 
