@@ -137,13 +137,7 @@ function performSearch() {
 }
 
 function searchClicked(intakeType, petType, size, sex) {
-    // Handle the logic using the selected choices
-    console.log("Intake Type:", intakeType);
-    console.log("Pet Type:", petType);
-    console.log("Size:", size);
-    console.log("Sex:", sex);
-    
-    
+
     function filterPet(pet) {
         let isMatch = true;  // Start with true and narrow down using conditions
         if (intakeType !== "") {
