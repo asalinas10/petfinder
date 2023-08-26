@@ -14,6 +14,12 @@
 
 </head>
 <body style ='background:rgb(43, 107, 98)'>
+    <div class="loading-overlay">
+        <div class="loading-content">
+           <iframe src="https://giphy.com/embed/TvLuZ00OIADoQ" frameBorder="0" allowFullScreen></iframe>
+           <p><a href="https://giphy.com/gifs/TvLuZ00OIADoQ">via GIPHY</a></p>
+        </div>
+     </div>
     
     <div class="container">
         <div class="jumbotron text-center">
@@ -61,10 +67,12 @@
         <div class="left-column">
             <div class="fact-panel">
                 <h3>Did you know?</h3>
-                <div id="fact-content"></div>
-                <div id="piechart"></div>
-                <div id="barchart-container"></div>
-                <div id="donutchart-container"></div>
+                <div class="graphs">
+                    <div id="fact-content"></div>
+                    <div id="piechart"></div>
+                    <div id="barchart-container"></div>
+                    <div id="donutchart-container"></div>
+                </div>
             </div>
             <div class = "social-media">
                 <strong>Follow Us!&nbsp;</strong><br>
@@ -119,7 +127,9 @@
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.sticky/1.0.4/jquery.sticky.min.js"></script>
             <script>
                 $(document).ready(function() {
-                    $("#adopt-here").sticky({ topSpacing: 500 });
+                    if ($(window).width() > 768) {
+                        $("#adopt-here").sticky({ topSpacing: 500 });
+                    }
                 });
             </script>
         </div>
@@ -132,15 +142,15 @@
         <script src="./static/js/script.js"></script>
         <script src="./static/js/graphs.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@glidejs/glide"></script>
-
     </div>   
-
-
-
-
-    
-
-
-
+    <script>
+        // This function hides the loading screen after a delay (e.g., 2 seconds)
+        function hideLoadingScreen() {
+           document.querySelector('.loading-overlay').style.display = 'none';
+        }
+  
+        // Call the hideLoadingScreen function after a delay
+        setTimeout(hideLoadingScreen, 2000); // 2000 milliseconds = 2 seconds
+     </script>
 </body>
 </html>
