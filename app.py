@@ -81,6 +81,10 @@ session.close()
 def index():
     return render_template('index.html')
 
+@app.route('/data_visualization')
+def data_visualization():
+    return render_template('visualizations.html')
+
 @app.route('/api/get_data')
 def get_data():
     session = Session()
