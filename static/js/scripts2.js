@@ -79,61 +79,63 @@ function createSub() {
 
 
     if (choice != catChoice) {
-        secondSet.append("label")
-            .attr("for", "sub-dropdown")
-            .attr("id", "sub-label")
-            .text("Sub-Category: ");
+        if (catChoice != "animal_type" && choice != "breed") {
+            secondSet.append("label")
+                .attr("for", "sub-dropdown")
+                .attr("id", "sub-label")
+                .text("Sub-Category: ");
 
-        secondSet.append("select")
-            .attr("id", "sub-dropdown");
+            secondSet.append("select")
+                .attr("id", "sub-dropdown");
 
-        if (choice == "animal_type") {
-            d3.json("/api/pet_types").then( function(data) {
-                let dropdown = d3.select("#sub-dropdown")
-                let addChoice = dropdown.append("option");
-                    addChoice.text("None").attr('value', "");
-                for (i=0; i<data.length; i++) {
+            if (choice == "animal_type") {
+                d3.json("/api/pet_types").then( function(data) {
+                    let dropdown = d3.select("#sub-dropdown")
                     let addChoice = dropdown.append("option");
-                    addChoice.text(`${data[i]}`).attr('value', `${data[i]}`);
-                }
-            });   
-        }
-        else if (choice == "intake_type") {
-            d3.json("/api/intake_type").then( function(data) {
-                let dropdown = d3.select("#sub-dropdown")
-                let addChoice = dropdown.append("option");
-                    addChoice.text("None").attr('value', "");
-                for (i=0; i<data.length; i++) {
+                        addChoice.text("None").attr('value', "");
+                    for (i=0; i<data.length; i++) {
+                        let addChoice = dropdown.append("option");
+                        addChoice.text(`${data[i]}`).attr('value', `${data[i]}`);
+                    }
+                });   
+            }
+            else if (choice == "intake_type") {
+                d3.json("/api/intake_type").then( function(data) {
+                    let dropdown = d3.select("#sub-dropdown")
                     let addChoice = dropdown.append("option");
-                    addChoice.text(`${data[i]}`).attr('value', `${data[i]}`);
-                }
-            });  
-        }
-        else if (choice == "breed") {
-            d3.json("/api/breed").then( function(data) {
-                let dropdown = d3.select("#sub-dropdown")
-                let addChoice = dropdown.append("option");
-                    addChoice.text("None").attr('value', "");
-                for (i=0; i<data.length; i++) {
+                        addChoice.text("None").attr('value', "");
+                    for (i=0; i<data.length; i++) {
+                        let addChoice = dropdown.append("option");
+                        addChoice.text(`${data[i]}`).attr('value', `${data[i]}`);
+                    }
+                });  
+            }
+            else if (choice == "breed") {
+                d3.json("/api/breed").then( function(data) {
+                    let dropdown = d3.select("#sub-dropdown")
                     let addChoice = dropdown.append("option");
-                    addChoice.text(`${data[i]}`).attr('value', `${data[i]}`);
-                }
-            });  
-        }
-        else if (choice == "sex") {
-            d3.json("/api/sex").then( function(data) {
-                let dropdown = d3.select("#sub-dropdown")
-                let sex = [];
-                for (i=0; i<data.length; i++) {
-                    sex.push(sexChange(data[i]));
-                }
-                let addChoice = dropdown.append("option");
-                    addChoice.text("None").attr('value', "");
-                for (i=0; i<data.length; i++) {
+                        addChoice.text("None").attr('value', "");
+                    for (i=0; i<data.length; i++) {
+                        let addChoice = dropdown.append("option");
+                        addChoice.text(`${data[i]}`).attr('value', `${data[i]}`);
+                    }
+                });  
+            }
+            else if (choice == "sex") {
+                d3.json("/api/sex").then( function(data) {
+                    let dropdown = d3.select("#sub-dropdown")
+                    let sex = [];
+                    for (i=0; i<data.length; i++) {
+                        sex.push(sexChange(data[i]));
+                    }
                     let addChoice = dropdown.append("option");
-                    addChoice.text(`${sex[i]}`).attr('value', `${data[i]}`);
-                }
-            });  
+                        addChoice.text("None").attr('value', "");
+                    for (i=0; i<data.length; i++) {
+                        let addChoice = dropdown.append("option");
+                        addChoice.text(`${sex[i]}`).attr('value', `${data[i]}`);
+                    }
+                });
+            }  
         }
     }
     d3.select("#second-set")
