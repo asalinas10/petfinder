@@ -180,6 +180,18 @@ def pet_intake_type():
     session.close()
     return unique_intake_type
 
+@app.route('/api/breed')
+def breed():
+    session = Session()
+    results = session.query(RowData.breed)
+    results_list = [row[0] for row in results]
+    unique_breed= []
+    for result in results_list:
+        if result not in unique_breed:
+            unique_breed.append(result)
+    session.close()
+    return unique_breed
+
 
 
 if __name__ == '__main__':
