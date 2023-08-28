@@ -79,7 +79,6 @@ function createSub() {
 
 
     if (choice != catChoice) {
-        if (catChoice != "animal_type" && choice != "breed") {
             secondSet.append("label")
                 .attr("for", "sub-dropdown")
                 .attr("id", "sub-label")
@@ -136,7 +135,7 @@ function createSub() {
                     }
                 });
             }  
-        }
+        
     }
     d3.select("#second-set")
         .append("button")
